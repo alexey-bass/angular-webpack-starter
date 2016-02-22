@@ -1,4 +1,4 @@
-import angular from 'angular';
+//import angular from 'angular';
 import styles  from 'index.css';
 import config  from 'index.json';
 

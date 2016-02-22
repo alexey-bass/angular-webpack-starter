@@ -1,10 +1,34 @@
 var path = require('path');
+var webpack = require('webpack');
+var HtmlWebpackPlugin = require('html-webpack-plugin');
 
 module.exports = {
 
   // set the context (optional)
   context: path.join( __dirname, '/src'),
-  entry: 'index.js',
+
+  entry: {
+    app:      'index.js',
+    vendors: ['angular']
+  },
+
+  output: {
+    path: path.resolve(__dirname, './dist'),
+    filename: '[name].[chunkhash].js'
+  },
+
+  plugins: [
+    new webpack.optimize.CommonsChunkPlugin('vendors', '[name].[chunkhash].js'),
+    new HtmlWebpackPlugin({
+      inject: 'body',
+      template: 'index.html',
+      minify: {
+        maxLineLength: 120,
+        collapseWhitespace: true,
+
+      }
+    })
+  ],
 
   // enable loading modules relatively (without the ../../ prefix)
   resolve: {
@@ -41,5 +65,5 @@ module.exports = {
   },
 
   // support source maps
-  devtool: "#inline-source-map"
+  devtool: "#source-map"
 };
