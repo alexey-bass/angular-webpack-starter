@@ -36,6 +36,8 @@
     "html-minifier": "1.2.x",
     "html-webpack-plugin": "2.9.x",
     "json-loader": "0.5.x",
+    "less": "2.6.x",
+    "less-loader": "2.2.x",
     "node-libs-browser": "0.5.x",
     "raw-loader": "0.5.x",
     "style-loader": "0.13.x",
@@ -44,6 +46,8 @@
     "webpack-dev-server": "1.14.x"
   },
   "dependencies": {
-    "angular": "1.x"
+    "angular": "1.5.x",
+    "angular-bootstrap": "0.12.x",
+    "bootstrap": "3.3.x"
   }
 }

@@ -2,9 +2,9 @@
 
 ### How to run:
 1. clone the project
-2. run `npm start`
-4. navigate to 'localhost/8080'
-5. start developing your Angular app with ES6 (javascript 2015)
+2. run `npm install`
+3. run `npm start`
+4. navigate to 'localhost:8080'
 
 ### what you get?
 - Minimal AngularJS development environment which

@@ -42,7 +42,8 @@ module.exports = {
       { test: /\.js$/, exclude: /node_modules/, loader:"babel", query: { presets: ['es2015', 'stage-1'] } },
 
       // load css and process less
-      { test: /\.css$/, loader: "style!css"},
+      { test: /\.css$/,  loader: "style!css", exclude: /node_modules/},
+      { test: /\.less$/, loader: "style!css!less", exclude: /node_modules/},
 
       // load JSON files and HTML
       { test: /\.json$/, loader: "json" },

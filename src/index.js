@@ -1,18 +1,14 @@
-//import angular from 'angular';
-import styles  from 'index.css';
-import config  from 'index.json';
+import vendors     from './vendors.module.js';
+import styles      from './assets/styles.less';
+import controllers from './controllers/controllers.module.js';
 
-class AppController {
+//import { routes } from 'config/routes';
 
-  constructor() {
-    this.title = 'Angular Webpack Minimal Starter';
-    this.info = angular.version;
-    this.version = config.version;
-  }
+angular.module('app', [
+    vendors.name,
+    controllers.name
+])
+    //.config(routes)
+;
 
-}
-
-angular.module('app.starter', [])
-  .controller('AppController', AppController);
-
-angular.bootstrap(document, ['app.starter']);
+angular.bootstrap(document, ['app']);
