@@ -1,6 +1,7 @@
-var path = require('path');
-var webpack = require('webpack');
-var HtmlWebpackPlugin = require('html-webpack-plugin');
+var path              = require('path'),
+    webpack           = require('webpack'),
+    HtmlWebpackPlugin = require('html-webpack-plugin'),
+    ExtractTextPlugin = require("extract-text-webpack-plugin");
 
 module.exports = {
 
@@ -19,14 +20,18 @@ module.exports = {
 
   plugins: [
     new webpack.optimize.CommonsChunkPlugin('vendors', '[name].[chunkhash].js'),
+
     new HtmlWebpackPlugin({
       inject: 'body',
       template: 'index.html',
       minify: {
         maxLineLength: 120,
-        collapseWhitespace: true,
-
+        collapseWhitespace: true
       }
+    }),
+
+    new ExtractTextPlugin('[hash].[name].css', {
+        allChunks: true
     })
   ],
 
@@ -39,11 +44,11 @@ module.exports = {
     loaders: [
 
       // load and compile javascript
-      { test: /\.js$/, exclude: /node_modules/, loader:"babel", query: { presets: ['es2015', 'stage-1'] } },
+      { test: /\.js$/,   exclude: /node_modules/, loader:"babel", query: { presets: ['es2015', 'stage-1'] } },
 
       // load css and process less
-      { test: /\.css$/,  loader: "style!css", exclude: /node_modules/},
-      { test: /\.less$/, loader: "style!css!less", exclude: /node_modules/},
+      { test: /\.less$/, exclude: /node_modules/, loader: ExtractTextPlugin.extract("style", "css!less") },
+      { test: /\.css$/,  exclude: /node_modules/, loader: ExtractTextPlugin.extract("style", "css") },
 
       // load JSON files and HTML
       { test: /\.json$/, loader: "json" },
@@ -62,7 +67,12 @@ module.exports = {
   devServer: {
     contentBase: "./src",
     noInfo: false,
-    hot: true
+    hot: false,
+    inline: false,
+    progress: true,
+    stats: {
+      colors: true
+    }
   },
 
   // support source maps

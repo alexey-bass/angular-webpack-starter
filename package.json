@@ -1,12 +1,13 @@
 {
   "name": "angular-webpack-starter",
-  "version": "1.1.0",
+  "version": "1.2.0",
   "description": "starter project with webpack, angular, es6 and bootstrap",
   "main": "index.js",
   "scripts": {
-    "start": "webpack-dev-server --progress",
-    "debug": "webpack-dev-server --progress --display-reasons --display-modules --profile",
-    "bundle": "npm list --depth=0 > ./dist/bundle.versions & webpack -p"
+    "start":  "webpack-dev-server --progress",
+    "debug":  "webpack-dev-server --progress --display-reasons --display-modules --profile",
+    "bundle": "npm list --depth=0 > ./dist/bundle.versions & webpack -p",
+    "list":   "npm list --depth=0"
   },
   "repository": {
     "type": "git",
@@ -27,11 +28,15 @@
   },
   "homepage": "https://github.com/alexey-bass/angular-webpack-starter",
   "devDependencies": {
+    "angular": "1.5.x",
+    "angular-bootstrap": "0.12.x",
     "babel-core": "6.3.x",
     "babel-loader": "6.2.x",
     "babel-preset-es2015": "6.3.x",
     "babel-preset-stage-1": "6.3.x",
+    "bootstrap": "3.3.x",
     "css-loader": "0.23.x",
+    "extract-text-webpack-plugin": "1.0.x",
     "file-loader": "0.8.x",
     "html-minifier": "1.2.x",
     "html-webpack-plugin": "2.9.x",
@@ -45,9 +50,5 @@
     "webpack": "1.12.x",
     "webpack-dev-server": "1.14.x"
   },
-  "dependencies": {
-    "angular": "1.5.x",
-    "angular-bootstrap": "0.12.x",
-    "bootstrap": "3.3.x"
-  }
+  "dependencies": {}
 }
